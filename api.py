@@ -26,6 +26,11 @@ students = [
      'Surname': 'Kuknariev',
      'Name': 'Dmitriy',
      'Course': '4',
+     'Speciality': 'IIP'},
+    {'id': 5,
+     'Surname': 'Kuknariev',
+     'Name': 'Dmitriy',
+     'Course': '4',
      'Speciality': 'IIP'}
 ]
 @app.route('/', methods = ['GET'])
@@ -44,14 +49,14 @@ def addOne():
     student = {'id':request.json['id'],'Surname' : request.json['Surname'], 'Name': request.json['Name'],'Course': request.json['Course'], 'Speciality': request.json['Speciality']}
     students.append(student)
     return jsonify({'students':students})
-@app.route('/studs/<string:Surname><string:Name><string:Course>', methods =['PUT'])
-def editOne(Surname,Name,Course):
-    studs = [student for student in students if student['Course']  == Course]
+@app.route('/studs/<int:id>', methods =['PUT'])
+def editOne(id):
+    studs = [student for student in students if student['id'] == id]
     studs[0]['Course'] = request.json['Course']
     return jsonify({'student': studs[0]})
-@app.route('/stud/<string:Surname>_<string:Name>', methods = ['DELETE'])
-def removeOne(Surname, Name):
-    stud = [student for student in students if student['Surname'] == Surname and student['Name'] == Name]
+@app.route('/studs/<int:id>', methods = ['DELETE'])
+def removeOne(id):
+    stud = [student for student in students if student['id'] == id]
     students.remove(stud[0])
     return jsonify({'students':students})
 if __name__ == '__main__':
