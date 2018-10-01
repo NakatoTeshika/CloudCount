@@ -35,7 +35,7 @@ students = [
 ]
 @app.route('/', methods = ['GET'])
 def test():
-    return jsonify({'message': 'Hi from Alex!'})
+    return jsonify({'message': 'Hi from Alexandra!'})
 @app.route('/studs',methods = ['GET'])
 def returnAll(): 
     return jsonify({'students': students})
