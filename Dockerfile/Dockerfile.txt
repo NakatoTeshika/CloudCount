@@ -1,3 +1,0 @@
-FROM python:3
-EXPOSE 8000
-CMD ["python", "./api.py"]
